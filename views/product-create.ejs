@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <form method="post">
+                    <p>Add Products</p>
+                    <div class="row mb-3">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="price" class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-8">
+                            <input type="number" name="price" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="description" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="description" name="description" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="imageUrl" class="col-sm-2 col-form-label">İmage</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="imageUrl" class="col-sm-2 col-form-label">Category</label>
+                        <div class="col-sm-8">
+                            <select name="category" id="category" class="form-control">
+                                <% categories.forEach((category)=> { %>
+                                    <option value="<%= category._id %>">
+                                        <%= category.name %>
+                                    </option>
+                                    <% }); %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="isActive" class="col-sm-2 col-form-label">Active</label>
+                        <div class="col-sm-8">
+                            <select name="isActive" id="isActive">
+                                <option  selected>Select</option>
+                                <option value="true">Active</option>
+                                <option value="false">Pasive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="comments" class="col-sm-2 col-form-label">Comments</label>
+                        <div class="col-sm-8">
+                            <div id="comments">
+                                <div class="comment-input">
+                                    <input type="text" name="comments[][text]" class="form-control" placeholder="Text">
+                                    <input type="text" name="comments[][username]" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-8 offset-sm-2">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</body>
+
+</html>
